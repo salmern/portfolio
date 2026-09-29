@@ -11,7 +11,7 @@ export function Experience() {
           <SectionHeading
             index="05"
             label="Experience"
-            title="Built in production, not in slides."
+            title="Built in production."
             description="Where I've shipped and what I owned — focused on engineering impact."
           />
         </Reveal>

@@ -34,5 +34,5 @@ export const engineeringSignals = [
   { code: "RUST", label: "high-performance services" },
   { code: "PAYMENTS", label: "settlement · reconciliation" },
   { code: "BLOCKCHAIN", label: "Solana · EVM · contracts" },
-  { code: "SECURITY", label: "by design, not afterthought" },
+  { code: "SECURITY", label: "by design" },
 ] as const;

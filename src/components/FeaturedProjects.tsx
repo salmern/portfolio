@@ -35,7 +35,7 @@ export function FeaturedProjects() {
             <SectionHeading
               index="01"
               label="Selected work"
-              title="Case studies, not cards."
+              title="Case studies."
               description="Each project below is a system with a problem, an architecture, and decisions worth explaining. Open one to read how it was built."
             />
           </Reveal>

@@ -55,9 +55,9 @@ export const principles: Principle[] = [
   {
     index: "02",
     title: "Security by design",
-    statement: "Security is part of architecture, not an afterthought.",
+    statement: "Security is part of architecture.",
     detail:
-      "Authentication at the boundary, authorization in the layer where it can be tested, secrets that never touch code, and signatures verified before payloads are trusted. Security reviews happen when the design is drawn, not after launch.",
+      "Authentication at the boundary, authorization in the layer where it can be tested, secrets that never touch code, and signatures verified before payloads are trusted. Security reviews happen when the design is drawn.",
   },
   {
     index: "03",
@@ -78,6 +78,6 @@ export const principles: Principle[] = [
     title: "Simple architecture, difficult problems",
     statement: "Avoid unnecessary complexity while solving genuinely hard problems.",
     detail:
-      "The difficulty should come from the problem — settlement correctness, escrow custody, scheduling under constraints — not from the architecture around it. Ten small, understandable services beat one tangled one.",
+      "The difficulty should come from the problem — settlement correctness, escrow custody, scheduling under constraints. Ten small, understandable services beat one tangled one.",
   },
 ];

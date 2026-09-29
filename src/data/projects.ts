@@ -16,7 +16,7 @@ export const projects: Project[] = [
     problem: [
       "Payments infrastructure sits between merchants, terminals, banks, and providers. Every flow — onboarding a terminal, authorizing a card payment, disbursing a loan, settling to a provider — has to be correct the first time, because a settlement error is real money.",
       "Merchants arrive in very different shapes: registered businesses, individuals, and public institutions (which have no CAC number). Each needs KYC verification, virtual accounts, and terminal provisioning — without leaking state between tenants.",
-      "Money movement had to survive process crashes. Settlement runs, webhook deliveries, and queue workers needed idempotency and reconciliation, not best-effort retries.",
+      "Money movement had to survive process crashes. Settlement runs, webhook deliveries, and queue workers needed idempotency and reconciliation.",
     ],
     approach: [
       "Ten services, one concern each: web, POS, and mobile entry points; merchant services; an aggregator and super-aggregator for provider routing; schedulers for cron jobs and queue workers; a notifications service; and a shared common crate.",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       },
       {
         title: "Provider adapters isolate quirks",
-        body: "Third-party eccentricities — Dojah's company-type mapping, SendGrid's implicit TLS on port 465 vs STARTTLS on 587 — live in one client each, not scattered through route handlers.",
+        body: "Third-party eccentricities — Dojah's company-type mapping, SendGrid's implicit TLS on port 465 vs STARTTLS on 587 — live in one client each.",
       },
       {
         title: "Async throughout",
@@ -141,7 +141,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "PDA-derived vaults",
-        body: "Escrow accounts are derived deterministically from lease seeds. No wallet holds renter funds — custody is a program invariant, not an account's balance.",
+        body: "Escrow accounts are derived deterministically from lease seeds. No wallet holds renter funds — custody is a program invariant.",
       },
       {
         title: "Token-native settlement",
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     stack: ["TypeScript", "Node.js", "Python", "Rust", "Next.js", "PostgreSQL", "JWT"],
     problem: [
       "Clinics run on paper diaries and trust. Records are scattered, permissions are enforced by people rather than by the system, and nobody has one coherent view of the practice.",
-      "The system had to enforce, automatically: a patient sees only their own records; a doctor sees the patients they treat; an admin sees everything. Authorization must be a property of the system, not of good behaviour.",
+      "The system had to enforce, automatically: a patient sees only their own records; a doctor sees the patients they treat; an admin sees everything. Authorization must be a property of the system.",
     ],
     approach: [
       "A layered API — routes → services → repositories → PostgreSQL — with every layer typed and each concern testable in isolation.",
@@ -221,12 +221,12 @@ export const projects: Project[] = [
     },
     decisions: [
       {
-        title: "RBAC in the service layer, not the routes",
+        title: "RBAC in the service layer",
         body: "Authorization rules live where they can be unit-tested and reasoned about, instead of being sprinkled through handlers.",
       },
       {
         title: "SQLx with migrations",
-        body: "Runtime-checked queries and versioned migrations keep schema and code evolving together, so a drift surfaces at compile time, not in production.",
+        body: "Runtime-checked queries and versioned migrations keep schema and code evolving together, so a drift surfaces at compile time.",
       },
       {
         title: "Explicit error model",
@@ -244,7 +244,7 @@ export const projects: Project[] = [
       },
       {
         title: "Multi-role data isolation",
-        body: "Every query that touches patient data must respect the caller's role — a patient fetching another patient's records is a bug, not a policy question.",
+        body: "Every query that touches patient data must respect the caller's role — a patient fetching another patient's records is a bug.",
       },
     ],
     result: [
@@ -327,7 +327,7 @@ export const projects: Project[] = [
       },
       {
         title: "Explaining a score",
-        body: "A number is useless without evidence. The scoring layer had to emit the reasoning alongside the score, not as an afterthought.",
+        body: "A number is useless without evidence. The scoring layer had to emit the reasoning alongside the score.",
       },
     ],
     result: [

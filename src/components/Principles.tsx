@@ -10,7 +10,7 @@ export function Principles() {
           <SectionHeading
             index="04"
             label="How I think about systems"
-            title="Principles, not preferences."
+            title="Principles."
             description="The constraints I design within — the decisions that keep systems correct when the pressure is on."
           />
         </Reveal>
