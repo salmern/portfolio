@@ -53,7 +53,7 @@ const steps: FlowStep[] = [
     sub: "amount · idempotency",
     ms: 460,
     log: [
-      { text: "amount=1250.00 > 0 · rust_decimal, no floats", tone: "ok" },
+      { text: "amount=1250.00 > 0 · exact decimals, no floats", tone: "ok" },
       { text: "idempotency key: no prior result — first attempt", tone: "ok" },
       { text: "signature & payload integrity verified", tone: "ok" },
     ],

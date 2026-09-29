@@ -14,12 +14,12 @@ export function Footer() {
             <div>
               <p className="font-display text-[15px] font-medium text-ink">{profile.name}</p>
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-3">
-                Rust · Backend · Blockchain · Payments
+                Senior Software Engineer
               </p>
             </div>
           </div>
           <p className="mt-6 max-w-xs text-[13px] leading-relaxed text-ink-3">
-            Backend and blockchain systems for production. Designed to be correct, secure, and
+            TypeScript, Node.js, Python, and Rust systems for production. Designed to be correct, secure, and
             boring in the right ways.
           </p>
         </div>
@@ -52,10 +52,10 @@ export function Footer() {
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-3">Index</p>
             <ul className="mt-4 space-y-2.5">
               {[
-                { label: "Work", href: "#work" },
-                { label: "About", href: "#about" },
-                { label: "Experience", href: "#experience" },
-                { label: "Contact", href: "#contact" },
+                { label: "Work", href: "/#work" },
+                { label: "About", href: "/#about" },
+                { label: "Experience", href: "/#experience" },
+                { label: "Contact", href: "/#contact" },
               ].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className="text-[13px] text-ink-2 transition-colors hover:text-ink">

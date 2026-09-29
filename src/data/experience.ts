@@ -3,7 +3,7 @@ import type { ExperienceEntry, Principle } from "@/types";
 export const experience: ExperienceEntry[] = [
   {
     period: "2021 — present",
-    role: "Rust Engineer",
+    role: "Senior Software Engineer",
     org: "Betastack",
     location: "Kano, Nigeria",
     current: true,
@@ -15,7 +15,7 @@ export const experience: ExperienceEntry[] = [
       "Microservice architecture with explicit error handling, retry mechanisms, and monitoring — designing for 99.9% availability rather than hoping for it.",
       "Database design, API development, and reliability ownership across the full lifecycle, from requirements through deployment.",
     ],
-    technologies: ["Rust", "PostgreSQL", "Redis", "Docker", "REST APIs", "AWS", "CI/CD"],
+    technologies: ["TypeScript", "Node.js", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS", "CI/CD"],
   },
   {
     period: "2019 — 2021",
@@ -40,7 +40,7 @@ export const experience: ExperienceEntry[] = [
     contributions: [
       "Owned the full delivery loop: translating business requirements into working systems, then shipping and supporting them.",
     ],
-    technologies: ["JavaScript", "PHP", "MySQL", "Linux"],
+    technologies: ["JavaScript", "Node.js", "Python", "PHP", "MySQL", "Linux"],
   },
 ];
 
