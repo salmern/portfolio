@@ -78,6 +78,18 @@ export const aiSystems: AiSystem[] = [
     live: { label: "salmanreporting.vercel.app", href: "https://salmanreporting.vercel.app" },
   },
   {
+    name: "Intelligent Invoice Processing",
+    kind: "n8n document automation",
+    description:
+      "An n8n workflow that watches a Gmail inbox for invoices, extracts vendor, invoice number, dates, amount, and currency from the email body or PDF attachment with Claude, validates the result, and logs it to Google Sheets.",
+    highlights: [
+      "Keyword pre-filter and separate PDF and email-text paths, so only invoice candidates reach the model",
+      "Defensive JSON parsing and required-field validation; every issue is recorded with its reason",
+      "Duplicate check on invoice number and vendor before writing; failures are logged as their own rows",
+    ],
+    stack: ["n8n", "Claude API", "Gmail", "Google Sheets", "JavaScript"],
+  },
+  {
     name: "Lead Triage",
     kind: "Deterministic scoring pipeline",
     description:

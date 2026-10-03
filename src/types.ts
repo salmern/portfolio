@@ -77,7 +77,7 @@ export interface AiSystem {
   description: string;
   highlights: string[];
   stack: string[];
-  repo: string;
+  repo?: string;
   live?: ExternalLink;
   caseStudy?: string;
 }

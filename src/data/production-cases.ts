@@ -1,11 +1,6 @@
 import type { Project } from "@/types";
 
-/*
- * DRAFT case studies for Betastack production systems — pending review.
- * ZainPay details are grounded in the ZainPOS integration (Zainboxes, virtual
- * accounts, signed webhooks, sandbox/production APIs). The Kano State entries
- * describe how these platforms typically work and need confirming.
- */
+/* Case studies for Betastack production systems. */
 
 export const betastackStack = ["TypeScript", "Node.js", "Go", "Python", "Rust", "PostgreSQL", "Redis"];
 

@@ -267,7 +267,7 @@ export const projects: Project[] = [
   },
   {
     slug: "lead-triage",
-    index: "06",
+    index: "07",
     title: "Lead Triage",
     tagline: "Deterministic lead scoring engine",
     summary:

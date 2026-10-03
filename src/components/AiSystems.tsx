@@ -18,7 +18,7 @@ export function AiSystems() {
               index="02"
               label="AI Automation & Agentic Systems"
               title="Agents with guardrails."
-              description={`Voice and research agents, content and proposal pipelines, and operational reporting, built through the ${aiProgram.name}. LLMs handle the language; deterministic code makes the decisions, gates the actions, and keeps the audit trail.`}
+              description={`Voice and research agents, content and proposal pipelines, document processing, and operational reporting, built through the ${aiProgram.name}. LLMs handle the language; deterministic code makes the decisions, gates the actions, and keeps the audit trail.`}
             />
           </Reveal>
           <Reveal delay={0.1}>
@@ -31,7 +31,11 @@ export function AiSystems() {
 
         <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-2">
           {aiSystems.map((p, i) => (
-            <Reveal key={p.name} delay={Math.min((i % 2) * 0.06, 0.12)}>
+            <Reveal
+              key={p.name}
+              delay={Math.min((i % 2) * 0.06, 0.12)}
+              className={aiSystems.length % 2 === 1 && i === aiSystems.length - 1 ? "md:col-span-2" : undefined}
+            >
               <article className="group relative flex h-full flex-col bg-bg p-6 transition-colors duration-300 hover:bg-surface md:p-8">
                 <span
                   className="absolute inset-y-0 left-0 w-px scale-y-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-y-100"
@@ -67,26 +71,30 @@ export function AiSystems() {
                   ))}
                 </div>
 
-                <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-4">
-                  <a href={p.repo} target="_blank" rel="noreferrer" className={linkClass}>
-                    <Github className="h-3.5 w-3.5" />
-                    Repository
-                    <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                  </a>
-                  {p.live ? (
-                    <a href={p.live.href} target="_blank" rel="noreferrer" title={p.live.label} className={linkClass}>
-                      <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" aria-hidden="true" />
-                      Live app
-                      <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-                    </a>
-                  ) : null}
-                  {p.caseStudy ? (
-                    <Link href={`/projects/${p.caseStudy}`} className={linkClass}>
-                      Case study
-                      <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover/link:translate-x-0.5" />
-                    </Link>
-                  ) : null}
-                </div>
+                {p.repo || p.live || p.caseStudy ? (
+                  <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-line pt-4">
+                    {p.repo ? (
+                      <a href={p.repo} target="_blank" rel="noreferrer" className={linkClass}>
+                        <Github className="h-3.5 w-3.5" />
+                        Repository
+                        <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                      </a>
+                    ) : null}
+                    {p.live ? (
+                      <a href={p.live.href} target="_blank" rel="noreferrer" title={p.live.label} className={linkClass}>
+                        <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-accent" aria-hidden="true" />
+                        Live app
+                        <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                      </a>
+                    ) : null}
+                    {p.caseStudy ? (
+                      <Link href={`/projects/${p.caseStudy}`} className={linkClass}>
+                        Case study
+                        <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover/link:translate-x-0.5" />
+                      </Link>
+                    ) : null}
+                  </div>
+                ) : null}
               </article>
             </Reveal>
           ))}
