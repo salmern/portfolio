@@ -8,9 +8,9 @@ export function Principles() {
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
           <SectionHeading
-            index="04"
+            index="05"
             label="How I think about systems"
-            title="Principles, not preferences."
+            title="Principles."
             description="The constraints I design within — the decisions that keep systems correct when the pressure is on."
           />
         </Reveal>

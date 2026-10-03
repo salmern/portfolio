@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { profile } from "@/data/site";
 
 export const runtime = "edge";
-export const alt = "Salman Muhammad — Rust Backend & Blockchain Payments Engineer";
+export const alt = "Salman Muhammad — Senior Software Engineer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -70,7 +70,7 @@ export default function OpengraphImage() {
         {/* statement */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", gap: 16, marginBottom: 28 }}>
-            {["Rust", "Backend", "Blockchain", "Payments", "Security"].map((t) => (
+            {["TypeScript", "Node.js", "Python", "Rust", "Payments"].map((t) => (
               <span
                 key={t}
                 style={{
@@ -117,7 +117,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             />
-            <span>Rust Backend &amp; Blockchain Payments Engineer</span>
+            <span>Senior Software Engineer</span>
           </div>
         </div>
 

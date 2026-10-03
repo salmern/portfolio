@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { cn } from "@/lib/utils";
 import type { Decision, Project, TechGroup } from "@/types";
@@ -19,7 +19,7 @@ export function ProjectHero({ project }: { project: Project }) {
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 md:py-24">
         <Reveal>
           <Link
-            href="/#work"
+            href={`/#${project.homeSection ?? "work"}`}
             className="group inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3 transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
@@ -70,6 +70,25 @@ export function ProjectHero({ project }: { project: Project }) {
             </div>
           </dl>
         </Reveal>
+
+        {project.links?.length ? (
+          <Reveal delay={0.22}>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {project.links.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group inline-flex items-center gap-2 border border-line-strong bg-surface-2 px-4 py-2.5 font-mono text-[12px] text-ink-2 transition-all duration-300 hover:border-accent-line hover:text-ink"
+                >
+                  {l.label}
+                  <ArrowUpRight className="h-3.5 w-3.5 text-ink-3 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                </a>
+              ))}
+            </div>
+          </Reveal>
+        ) : null}
       </div>
     </div>
   );

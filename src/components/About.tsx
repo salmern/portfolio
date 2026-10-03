@@ -2,7 +2,7 @@ import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
 const focus = [
-  "Backend systems & distributed services",
+  "Backend systems in TypeScript/Node.js, Python & Rust",
   "Payment infrastructure & financial correctness",
   "Blockchain — Solana & EVM, contracts & custody",
   "Databases, queues, and the seams between them",
@@ -11,8 +11,8 @@ const focus = [
 const facts = [
   { k: "experience", v: "6+ yrs production systems" },
   { k: "blockchain", v: "3+ yrs protocol & contracts" },
-  { k: "primary", v: "Rust" },
-  { k: "today", v: "Solana ecosystem" },
+  { k: "languages", v: "TS · Node · Python · Rust" },
+  { k: "level", v: "Senior engineer" },
 ];
 
 export function About() {
@@ -20,18 +20,19 @@ export function About() {
     <section id="about" className="relative z-10 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
-          <SectionHeading index="02" label="About" title="Engineering, not decoration." />
+          <SectionHeading index="03" label="About" title="Engineering." />
         </Reveal>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-[1.5fr_1fr]">
           <Reveal delay={0.05}>
             <div className="space-y-5 text-[15px] leading-[1.8] text-ink-2">
               <p>
-                I&apos;m a software engineer who works where the stakes are real: payment rails,
-                settlement systems, and the smart contracts that hold money. My primary language is{" "}
-                <span className="text-ink">Rust</span> — I use it for the backend services, queue
-                workers, and Solana programs where memory safety and performance aren&apos;t
-                optional.
+                I&apos;m a senior software engineer who works where the stakes are real: payment rails,
+                settlement systems, and the smart contracts that hold money. I&apos;m polyglot by
+                design — <span className="text-ink">TypeScript and Node.js</span> for APIs,
+                integrations, and product services; <span className="text-ink">Python</span> for data
+                pipelines, reconciliation, and automation; and <span className="text-ink">Rust</span>{" "}
+                where raw performance and memory safety are the requirement.
               </p>
               <p>
                 Most of my production work has been in <span className="text-ink">payment infrastructure</span>:

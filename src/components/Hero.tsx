@@ -67,7 +67,7 @@ export function Hero() {
               className="font-mono text-[11px] uppercase tracking-[0.3em] text-ink-2"
             >
               <span className="mr-2 inline-block h-[7px] w-[7px] bg-accent align-middle" aria-hidden="true" />
-              Software Engineer — Systems &amp; Payments
+              Backend · Payments · Blockchain
             </motion.p>
 
             <h1 className="mt-7 font-display font-medium leading-[0.95] tracking-[-0.03em] text-ink">
@@ -97,7 +97,7 @@ export function Hero() {
               className="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[13px] uppercase tracking-[0.22em] text-accent"
             >
               <span className="h-2 w-2 animate-pulse-dot rounded-full bg-accent" aria-hidden="true" />
-              Rust Backend &amp; Blockchain Payments Engineer
+              {profile.title}
             </motion.p>
 
             <motion.p
@@ -189,7 +189,7 @@ export function Hero() {
                 {[
                   { k: "location", v: profile.location },
                   { k: "timezone", v: profile.timezone },
-                  { k: "focus", v: "payments · blockchain" },
+                  { k: "stack", v: "TypeScript · Node.js · Python · Rust" },
                   { k: "email", v: profile.email, mono: true },
                 ].map((row) => (
                   <div key={row.k} className="flex items-baseline justify-between gap-6 px-5 py-3">

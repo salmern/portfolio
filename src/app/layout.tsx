@@ -30,14 +30,17 @@ const siteUrl = "https://salmanmuhammad.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${profile.name} — Rust Backend & Blockchain Payments Engineer`,
+    default: `${profile.name} — Senior Software Engineer`,
     template: `%s — ${profile.name}`,
   },
   description:
-    "Salman Muhammad engineers secure backend and blockchain infrastructure: Rust services, payment rails, settlement systems, and Solana smart contracts for production.",
+    "Salman Muhammad is a senior software engineer building backend, payment, and blockchain systems in TypeScript, Node.js, Python, and Rust.",
   keywords: [
+    "Senior software engineer",
+    "TypeScript developer",
+    "Node.js engineer",
+    "Python developer",
     "Rust developer",
-    "Rust backend engineer",
     "blockchain developer",
     "Solana developer",
     "payment engineer",
@@ -53,16 +56,16 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: `${profile.name} — Portfolio`,
-    title: `${profile.name} — Rust Backend & Blockchain Payments Engineer`,
+    title: `${profile.name} — Senior Software Engineer`,
     description:
-      "Secure backend and blockchain infrastructure: Rust services, payment rails, settlement systems, and Solana smart contracts for production.",
+      "Senior software engineer: TypeScript, Node.js, Python, and Rust services, payment rails, settlement systems, and smart contracts for production.",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name} — Rust Backend & Blockchain Payments Engineer`,
+    title: `${profile.name} — Senior Software Engineer`,
     description:
-      "Secure backend and blockchain infrastructure: Rust services, payment rails, settlement systems, and Solana smart contracts for production.",
+      "Senior software engineer: TypeScript, Node.js, Python, and Rust services, payment rails, settlement systems, and smart contracts for production.",
   },
   robots: {
     index: true,

@@ -53,7 +53,7 @@ const steps: FlowStep[] = [
     sub: "amount · idempotency",
     ms: 460,
     log: [
-      { text: "amount=1250.00 > 0 · rust_decimal, no floats", tone: "ok" },
+      { text: "amount=1250.00 > 0 · exact decimals, no floats", tone: "ok" },
       { text: "idempotency key: no prior result — first attempt", tone: "ok" },
       { text: "signature & payload integrity verified", tone: "ok" },
     ],
@@ -193,7 +193,7 @@ export function SystemFlow() {
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
           <SectionHeading
-            index="07"
+            index="08"
             label="Systems in motion"
             title="A payment intent, traced end to end."
             description="This is how I think about a request moving through a system — every hop validated, every step accounted for. Press run, or watch it go."

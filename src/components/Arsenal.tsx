@@ -17,7 +17,7 @@ export function Arsenal() {
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
           <SectionHeading
-            index="03"
+            index="04"
             label="Engineering arsenal"
             title="Tools, by capability."
             description="Not a logo wall — organized by what each tool does in a system, with the projects it shows up in. Hover a technology for context."

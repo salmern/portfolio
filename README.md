@@ -1,7 +1,7 @@
 # Salman Muhammad — Portfolio
 
-A premium, production-quality portfolio for **Salman Muhammad — Rust Backend &
-Blockchain Payments Engineer**. Built with Next.js (App Router), TypeScript,
+A premium, production-quality portfolio for **Salman Muhammad — Senior Software
+Engineer**. Built with Next.js (App Router), TypeScript,
 Tailwind CSS v4, and Motion.
 
 ## Quick start

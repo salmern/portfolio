@@ -6,7 +6,7 @@ const OUT = "/tmp/shots";
 mkdirSync(OUT, { recursive: true });
 
 const browser = await puppeteer.launch({
-  executablePath: "/usr/bin/google-chrome",
+  executablePath: process.env.CHROME_PATH ?? "/usr/bin/google-chrome",
   headless: "new",
   args: ["--no-sandbox", "--disable-gpu"],
 });

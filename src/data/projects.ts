@@ -1,4 +1,5 @@
 import type { OtherWork, Project } from "@/types";
+import { productionCases } from "@/data/production-cases";
 
 export const projects: Project[] = [
   {
@@ -7,31 +8,32 @@ export const projects: Project[] = [
     title: "ZainPOS",
     tagline: "Payment terminal & settlement infrastructure",
     summary:
-      "Production payment infrastructure: terminal onboarding, card processing, virtual accounts, settlement reconciliation, and loan disbursement — a Rust workspace of ten services moving money.",
-    role: "Backend Engineer",
+      "Production payment infrastructure: terminal onboarding, card processing, virtual accounts, settlement reconciliation, and loan disbursement — ten services moving money, built in TypeScript/Node.js, Python, and Rust.",
+    role: "Senior Software Engineer",
     year: "2021 — present",
     status: "Production",
     statusTone: "live",
-    stack: ["Rust", "Actix Web", "PostgreSQL", "Redis", "SQLx", "tokio-cron-scheduler", "Docker", "AWS"],
+    stack: ["TypeScript", "Node.js", "Go", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS"],
     problem: [
       "Payments infrastructure sits between merchants, terminals, banks, and providers. Every flow — onboarding a terminal, authorizing a card payment, disbursing a loan, settling to a provider — has to be correct the first time, because a settlement error is real money.",
       "Merchants arrive in very different shapes: registered businesses, individuals, and public institutions (which have no CAC number). Each needs KYC verification, virtual accounts, and terminal provisioning — without leaking state between tenants.",
-      "Money movement had to survive process crashes. Settlement runs, webhook deliveries, and queue workers needed idempotency and reconciliation, not best-effort retries.",
+      "Money movement had to survive process crashes. Settlement runs, webhook deliveries, and queue workers needed idempotency and reconciliation.",
     ],
     approach: [
-      "A ten-crate Rust workspace, one concern per crate: web, POS, and mobile entry points; merchant services; an aggregator and super-aggregator for provider routing; schedulers for cron jobs and queue workers; a notifications service; and a shared common crate.",
-      "All state in PostgreSQL via SQLx with compile-time-checked queries. Redis (behind a pooled connection manager) carries queues and transient state. tokio-cron-scheduler drives batch work like settlement reconciliation.",
-      "Money is modeled as rust_decimal everywhere. Binary floats never touch an amount.",
+      "Ten services, one concern each: web, POS, and mobile entry points; merchant services; an aggregator and super-aggregator for provider routing; schedulers for cron jobs and queue workers; a notifications service; and a shared common crate.",
+      "All state lives in PostgreSQL, with typed queries in every service. Redis (behind a pooled connection manager) carries queues and transient state. tokio-cron-scheduler drives batch work like settlement reconciliation.",
+      "TypeScript and Node.js power the merchant dashboard APIs, provider integrations, and webhook delivery. Python handles reconciliation reports, settlement audits, and data migrations. Rust runs the latency-critical transaction path.",
+      "Money is modeled as exact decimals in every language. Binary floats never touch an amount."
     ],
     architecture: {
       caption: "A request flows: entry point → merchant services → validation → business logic → queues → ledger, with provider adapters and scheduled workers around the edges.",
       nodes: [
         { id: "entry", title: "Entry points", sub: "Web · POS · Mobile", kind: "entry" },
-        { id: "api", title: "Merchant services", sub: "Actix Web · typed routes", kind: "process" },
+        { id: "api", title: "Merchant services", sub: "Node.js · TypeScript · Rust", kind: "process" },
         { id: "validation", title: "Validation", sub: "JWT + Argon2 · Dojah BVN/CAC", kind: "process" },
         { id: "business", title: "Business logic", sub: "Cards · virtual accounts · loans", kind: "process" },
-        { id: "queues", title: "Queues & schedulers", sub: "Redis · tokio-cron workers", kind: "process" },
-        { id: "ledger", title: "PostgreSQL", sub: "SQLx · migrations · rust_decimal", kind: "store" },
+        { id: "queues", title: "Queues & schedulers", sub: "Redis · workers · Python recon", kind: "process" },
+        { id: "ledger", title: "PostgreSQL", sub: "migrations · exact decimals", kind: "store" },
         { id: "providers", title: "Providers", sub: "ZainPay · Jigo · SendGrid · Dojah", kind: "external" },
         { id: "output", title: "Webhooks & mail", sub: "signature-verified deliveries", kind: "output" },
       ],
@@ -61,7 +63,7 @@ export const projects: Project[] = [
       },
       {
         title: "Provider adapters isolate quirks",
-        body: "Third-party eccentricities — Dojah's company-type mapping, SendGrid's implicit TLS on port 465 vs STARTTLS on 587 — live in one client each, not scattered through route handlers.",
+        body: "Third-party eccentricities — Dojah's company-type mapping, SendGrid's implicit TLS on port 465 vs STARTTLS on 587 — live in one client each.",
       },
       {
         title: "Async throughout",
@@ -88,16 +90,18 @@ export const projects: Project[] = [
       "Settlement and reconciliation automated end-to-end: queue workers, cron schedulers, and repush recovery for failed transactions.",
     ],
     technologies: [
-      { group: "Backend", items: ["Rust", "Actix Web", "Tokio", "SQLx", "tokio-postgres", "tokio-cron-scheduler"] },
-      { group: "Data", items: ["PostgreSQL", "Redis", "rust_decimal", "migrations"] },
+      { group: "Backend", items: ["TypeScript", "Node.js", "Express", "Go", "Rust", "Actix Web", "Tokio", "SQLx"] },
+      { group: "Data & automation", items: ["Python", "pandas", "PostgreSQL", "Redis", "migrations", "reconciliation reports"] },
       { group: "Security", items: ["JWT", "Argon2", "secrecy", "webhook signature verification"] },
       { group: "Infrastructure", items: ["Docker", "AWS", "Tracing / Bunyan logs", "wiremock · mockito tests"] },
     ],
-    next: "solnest",
+    links: [{ label: "zainpos.ng", href: "https://zainpos.ng/" }],
+    next: "zainpay",
   },
+  ...productionCases,
   {
     slug: "solnest",
-    index: "02",
+    index: "01",
     title: "SolNest",
     tagline: "Rental escrow on Solana",
     summary:
@@ -106,7 +110,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "Devnet · MVP",
     statusTone: "dev",
-    stack: ["Rust", "Solana", "Anchor", "SPL Tokens", "TypeScript", "React", "PostgreSQL", "IPFS"],
+    stack: ["TypeScript", "Node.js", "Python", "Rust", "Solana", "Anchor", "React", "PostgreSQL"],
     problem: [
       "The rental market runs on trust: renters risk losing deposits to dishonest landlords, owners risk non-payment from unreliable tenants, and everyone pays for intermediaries and slow disputes.",
       "The escrow problem — funds held until both sides fulfil their side — is exactly what a blockchain can do without a trusted third party. The hard part is getting custody, settlement, and failure handling right.",
@@ -115,12 +119,13 @@ export const projects: Project[] = [
       "The escrow lifecycle lives on-chain: a renter deposits into a PDA-derived vault, the owner confirms lease fulfilment, and funds are released. A 72-hour confirmation window protects both sides — if the owner never confirms, the renter can reclaim.",
       "Only the state transitions that need trust live on-chain. Listings, documents, and images sit off-chain in PostgreSQL and IPFS, keeping on-chain state small and predictable.",
       "Custody uses SPL tokens (USDC/USDT, 6-decimal), so lease amounts aren't exposed to SOL volatility.",
+      "A TypeScript/Node.js API serves listings and leases and indexes on-chain events. Python scripts seed devnet and run end-to-end escrow scenarios before each release.",
     ],
     architecture: {
       caption: "Frontend signs and submits transactions; the Anchor program owns custody via PDA vaults; metadata stays off-chain.",
       nodes: [
         { id: "frontend", title: "React frontend", sub: "Wallet adapter · Phantom/Solflare", kind: "entry" },
-        { id: "backend", title: "Backend API", sub: "Node/Express · PostgreSQL · IPFS", kind: "process" },
+        { id: "backend", title: "Backend API", sub: "Node.js · TypeScript · Express", kind: "process" },
         { id: "program", title: "Anchor program", sub: "Rust · instruction validation", kind: "process" },
         { id: "vault", title: "PDA escrow vault", sub: "derived from lease seeds", kind: "store" },
         { id: "tokens", title: "SPL tokens", sub: "USDC / USDT · 6 decimals", kind: "store" },
@@ -139,7 +144,7 @@ export const projects: Project[] = [
     decisions: [
       {
         title: "PDA-derived vaults",
-        body: "Escrow accounts are derived deterministically from lease seeds. No wallet holds renter funds — custody is a program invariant, not an account's balance.",
+        body: "Escrow accounts are derived deterministically from lease seeds. No wallet holds renter funds — custody is a program invariant.",
       },
       {
         title: "Token-native settlement",
@@ -170,36 +175,39 @@ export const projects: Project[] = [
     ],
     technologies: [
       { group: "Blockchain", items: ["Solana", "Anchor 0.32", "Rust", "SPL Token", "PDAs", "Web3.js"] },
-      { group: "Backend", items: ["Node.js", "Express", "PostgreSQL", "IPFS / Pinata"] },
+      { group: "Backend", items: ["TypeScript", "Node.js", "Express", "PostgreSQL", "IPFS / Pinata"] },
       { group: "Frontend", items: ["React 19", "TypeScript", "Tailwind CSS", "Wallet Adapter"] },
+      { group: "Tooling", items: ["Python", "devnet seeding", "E2E escrow scenarios"] },
     ],
+    homeSection: "building",
     next: "lifelark",
   },
   {
     slug: "lifelark",
-    index: "03",
+    index: "02",
     title: "Lifelark",
     tagline: "Healthcare platform backend",
     summary:
-      "A clinic operating system: patients, doctors, appointments, and medical records behind strict role-based access — a layered Rust API with an availability engine for scheduling.",
+      "A clinic operating system: patients, doctors, appointments, and medical records behind strict role-based access — a layered API in Rust, TypeScript, and Python, with an availability engine for scheduling.",
     role: "Backend Engineer",
     year: "2025",
     status: "Active development",
     statusTone: "dev",
-    stack: ["Rust", "Actix Web", "SQLx", "PostgreSQL", "JWT", "Argon2"],
+    stack: ["TypeScript", "Node.js", "Python", "Rust", "Next.js", "PostgreSQL", "JWT"],
     problem: [
       "Clinics run on paper diaries and trust. Records are scattered, permissions are enforced by people rather than by the system, and nobody has one coherent view of the practice.",
-      "The system had to enforce, automatically: a patient sees only their own records; a doctor sees the patients they treat; an admin sees everything. Authorization must be a property of the system, not of good behaviour.",
+      "The system had to enforce, automatically: a patient sees only their own records; a doctor sees the patients they treat; an admin sees everything. Authorization must be a property of the system.",
     ],
     approach: [
-      "A layered Rust API — routes → services → repositories → PostgreSQL — with every layer typed and each concern testable in isolation.",
+      "A layered API — routes → services → repositories → PostgreSQL — with every layer typed and each concern testable in isolation.",
       "An availability engine derives bookable slots from doctor working hours and days off, and validates every appointment against it at creation time.",
       "JWT access tokens with refresh rotation; passwords hashed with Argon2; input validated at the boundary with typed error responses.",
+      "A Next.js and Node.js layer in TypeScript handles sessions, notifications, and appointment reminders. Python jobs produce clinic reports and seed test data.",
     ],
     architecture: {
       caption: "Requests pass through typed layers; authorization is enforced in the service layer where it can be unit-tested.",
       nodes: [
-        { id: "client", title: "Next.js frontend", sub: "patients · doctors · admin", kind: "entry" },
+        { id: "client", title: "Next.js frontend", sub: "TypeScript · Node.js BFF", kind: "entry" },
         { id: "routes", title: "Actix Web routes", sub: "validation · authn", kind: "process" },
         { id: "services", title: "Service layer", sub: "RBAC · business rules", kind: "process" },
         { id: "avail", title: "Availability engine", sub: "slots from working hours", kind: "process" },
@@ -217,12 +225,12 @@ export const projects: Project[] = [
     },
     decisions: [
       {
-        title: "RBAC in the service layer, not the routes",
+        title: "RBAC in the service layer",
         body: "Authorization rules live where they can be unit-tested and reasoned about, instead of being sprinkled through handlers.",
       },
       {
         title: "SQLx with migrations",
-        body: "Runtime-checked queries and versioned migrations keep schema and code evolving together, so a drift surfaces at compile time, not in production.",
+        body: "Runtime-checked queries and versioned migrations keep schema and code evolving together, so a drift surfaces at compile time.",
       },
       {
         title: "Explicit error model",
@@ -240,24 +248,26 @@ export const projects: Project[] = [
       },
       {
         title: "Multi-role data isolation",
-        body: "Every query that touches patient data must respect the caller's role — a patient fetching another patient's records is a bug, not a policy question.",
+        body: "Every query that touches patient data must respect the caller's role — a patient fetching another patient's records is a bug.",
       },
     ],
     result: [
-      "A full-stack platform — Rust API plus Next.js frontend — managing patients, doctors, appointments, and medical records with role-based access enforced end-to-end.",
+      "A full-stack platform — Rust core API, TypeScript/Node.js services, and a Next.js frontend — managing patients, doctors, appointments, and medical records with role-based access enforced end-to-end.",
       "A repeatable backend foundation: typed layers, tested authorization, and an availability engine reusable for other scheduling domains.",
     ],
     technologies: [
       { group: "Backend", items: ["Rust", "Actix Web", "Tokio", "SQLx", "validator", "thiserror"] },
       { group: "Data", items: ["PostgreSQL", "rust_decimal", "UUID", "migrations"] },
       { group: "Security", items: ["JWT", "Argon2", "RBAC", "refresh rotation"] },
-      { group: "Frontend", items: ["Next.js", "TypeScript"] },
+      { group: "Web & services", items: ["TypeScript", "Node.js", "Next.js", "reminder jobs"] },
+      { group: "Data & reporting", items: ["Python", "pandas", "report generation"] },
     ],
-    next: "lead-triage",
+    homeSection: "building",
+    next: "solnest",
   },
   {
     slug: "lead-triage",
-    index: "04",
+    index: "07",
     title: "Lead Triage",
     tagline: "Deterministic lead scoring engine",
     summary:
@@ -266,7 +276,7 @@ export const projects: Project[] = [
     year: "2025",
     status: "Delivered",
     statusTone: "done",
-    stack: ["Python", "Streamlit", "pandas", "openpyxl"],
+    stack: ["Python", "TypeScript", "Node.js", "pandas", "Streamlit"],
     problem: [
       "A marketing agency was triaging messy inbound-lead exports by hand — slow, inconsistent, and impossible to defend when asked why a lead was prioritized.",
       "LLM-based scoring was the obvious shortcut, but it is non-reproducible, costs money per run, and can't explain a score point-by-point. The requirement was the opposite: deterministic, explainable, and free to run.",
@@ -274,12 +284,13 @@ export const projects: Project[] = [
     approach: [
       "Three strict layers with no hidden behaviour: cleaning (normalize columns, parse emails/dates/budgets, flag junk and duplicates with reasons — never silently delete), signal extraction (a deterministic phrase/pattern engine over free-text notes), and scoring (six weighted factors, max 100).",
       "The same core functions power the CLI and the Streamlit UI, so the numbers always agree.",
+      "A small TypeScript/Node.js ingestion service pulls fresh exports from the agency's CRM, so scoring runs without manual uploads.",
       "Recommendation rules on top: disqualifier overrides, a buying-signal gate, and an early-stage floor — each decision recorded with its evidence.",
     ],
     architecture: {
       caption: "Raw exports pass through cleaning → signals → scoring; every layer logs what it did and why.",
       nodes: [
-        { id: "raw", title: "Raw export", sub: ".xlsx / .csv", kind: "entry" },
+        { id: "raw", title: "Raw export", sub: ".xlsx / .csv · Node.js ingest", kind: "entry" },
         { id: "clean", title: "Cleaning layer", sub: "normalize · flag · audit", kind: "process" },
         { id: "signal", title: "Signal layer", sub: "phrase engine · evidence", kind: "process" },
         { id: "score", title: "Scoring layer", sub: "6 factors · max 100", kind: "process" },
@@ -321,7 +332,7 @@ export const projects: Project[] = [
       },
       {
         title: "Explaining a score",
-        body: "A number is useless without evidence. The scoring layer had to emit the reasoning alongside the score, not as an afterthought.",
+        body: "A number is useless without evidence. The scoring layer had to emit the reasoning alongside the score.",
       },
     ],
     result: [
@@ -329,11 +340,13 @@ export const projects: Project[] = [
       "A reusable pipeline: new exports process with zero code changes, and every decision is explainable to a client.",
     ],
     technologies: [
-      { group: "Language", items: ["Python 3.10+"] },
+      { group: "Languages", items: ["Python 3.10+", "TypeScript", "Node.js"] },
       { group: "Data", items: ["pandas", "openpyxl", "deterministic rule engine"] },
       { group: "UI", items: ["Streamlit", "sortable tables", "CSV export"] },
       { group: "Quality", items: ["pytest", "property-style tests on scoring config"] },
     ],
+    links: [{ label: "GitHub", href: "https://github.com/salmern/Lead-Triage--" }],
+    homeSection: "ai-systems",
   },
 ];
 
@@ -343,28 +356,28 @@ export const otherWork: OtherWork[] = [
     kind: "Protocol tooling",
     description:
       "A single-call A2MCP service that inspects a wallet's Aave V3 lending positions across Ethereum, Arbitrum, and Base and returns a plain-English liquidation risk assessment. Built for the OKX.AI Genesis Hackathon.",
-    stack: ["TypeScript", "Aave V3", "A2MCP"],
+    stack: ["TypeScript", "Node.js", "Python", "Aave V3", "A2MCP"],
   },
   {
     name: "TradeLens AI",
     kind: "Observability",
     description:
       "Observability and evaluation infrastructure for autonomous trading agents: high-throughput event ingestion, a risk engine with anomaly detection, and real-time dashboards.",
-    stack: ["Rust", "Actix Web", "SQLx", "React", "Recharts"],
+    stack: ["TypeScript", "Node.js", "Python", "Rust", "React"],
   },
   {
     name: "Chain Sentinel",
     kind: "On-chain monitor",
     description:
       "A Rust/alloy daemon watching USDC and WETH exposure against a Uniswap v4 PoolManager, alerting when a position crosses a configured threshold.",
-    stack: ["Rust", "alloy", "tokio"],
+    stack: ["TypeScript", "Node.js", "Python", "Rust", "alloy"],
   },
   {
     name: "Puppy Raffle audit",
     kind: "Security review",
     description:
       "A structured smart-contract security review: Foundry-based exploit reproduction and a written report covering reentrancy, weak randomness, and dangerous strict balance checks.",
-    stack: ["Solidity", "Foundry", "Aderyn"],
+    stack: ["Solidity", "Foundry", "TypeScript", "Node.js", "Python · Slither"],
   },
 ];
 

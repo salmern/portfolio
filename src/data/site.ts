@@ -3,10 +3,10 @@ import type { Profile } from "@/types";
 export const profile: Profile = {
   name: "Salman Muhammad Yahya",
   monogram: "SM",
-  title: "Rust Backend & Blockchain Payments Engineer",
-  heroStatement: "I engineer secure backend and blockchain infrastructure for systems where reliability, correctness, and performance matter.",
+  title: "Senior Software Engineer",
+  heroStatement: "I design and ship production systems — backend services, payment rails, and blockchain infrastructure — where reliability, correctness, and performance matter.",
   heroSupport:
-    "Payment rails, on-chain escrow, and the systems behind them — built to move value reliably.",
+    "TypeScript & Node.js, Python, Go and Rust — choosing the right tool for each layer, from APIs and data pipelines to smart contracts.",
   location: "Kano, Nigeria",
   timezone: "UTC+1",
   availability: "Open to remote engineering opportunities",
@@ -18,19 +18,21 @@ export const profile: Profile = {
 };
 
 export const capabilityStrip = [
+  "TypeScript",
+  "Node.js",
+  "Python",
   "Rust",
   "Backend",
-  "Blockchain",
   "Payments",
-  "Systems",
+  "Blockchain",
   "Security",
 ] as const;
 
 export const engineeringSignals = [
-  { code: "RUST", label: "systems programming" },
-  { code: "BACKEND", label: "APIs · services · queues" },
-  { code: "BLOCKCHAIN", label: "Solana · EVM · contracts" },
+  { code: "TS / NODE", label: "APIs · SDKs · services" },
+  { code: "PYTHON", label: "data · pipelines · automation" },
+  { code: "RUST", label: "high-performance services" },
   { code: "PAYMENTS", label: "settlement · reconciliation" },
-  { code: "SYSTEMS", label: "distributed · reliable" },
-  { code: "SECURITY", label: "by design, not afterthought" },
+  { code: "BLOCKCHAIN", label: "Solana · EVM · contracts" },
+  { code: "SECURITY", label: "by design" },
 ] as const;

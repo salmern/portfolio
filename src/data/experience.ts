@@ -3,19 +3,19 @@ import type { ExperienceEntry, Principle } from "@/types";
 export const experience: ExperienceEntry[] = [
   {
     period: "2021 — present",
-    role: "Rust Engineer",
+    role: "Senior Software Engineer",
     org: "Betastack",
     location: "Kano, Nigeria",
     current: true,
     description:
-      "Building and scaling fintech infrastructure for payment processing, POS terminals, digital wallets, and government revenue platforms.",
+      "Building and scaling fintech infrastructure for payment processing, POS terminals, and digital wallets, plus production systems for Kano State Government.",
     contributions: [
       "Payment terminal system (ZainPOS) and digital wallet platform (ZainPay) — the payment infrastructure in this portfolio's flagship case study.",
-      "Kano State government revenue (IGR) automation: a production system collecting and reconciling government revenue.",
+      "Kano State Government systems: the revenue (IGR) platform collecting and reconciling government revenue, the BLM land management system, and Water Board utility systems.",
       "Microservice architecture with explicit error handling, retry mechanisms, and monitoring — designing for 99.9% availability rather than hoping for it.",
       "Database design, API development, and reliability ownership across the full lifecycle, from requirements through deployment.",
     ],
-    technologies: ["Rust", "PostgreSQL", "Redis", "Docker", "REST APIs", "AWS", "CI/CD"],
+    technologies: ["TypeScript", "Node.js", "Go", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS", "CI/CD"],
   },
   {
     period: "2019 — 2021",
@@ -40,7 +40,7 @@ export const experience: ExperienceEntry[] = [
     contributions: [
       "Owned the full delivery loop: translating business requirements into working systems, then shipping and supporting them.",
     ],
-    technologies: ["JavaScript", "PHP", "MySQL", "Linux"],
+    technologies: ["JavaScript", "Node.js", "Python", "PHP", "MySQL", "Linux"],
   },
 ];
 
@@ -55,9 +55,9 @@ export const principles: Principle[] = [
   {
     index: "02",
     title: "Security by design",
-    statement: "Security is part of architecture, not an afterthought.",
+    statement: "Security is part of architecture.",
     detail:
-      "Authentication at the boundary, authorization in the layer where it can be tested, secrets that never touch code, and signatures verified before payloads are trusted. Security reviews happen when the design is drawn, not after launch.",
+      "Authentication at the boundary, authorization in the layer where it can be tested, secrets that never touch code, and signatures verified before payloads are trusted. Security reviews happen when the design is drawn.",
   },
   {
     index: "03",
@@ -78,6 +78,6 @@ export const principles: Principle[] = [
     title: "Simple architecture, difficult problems",
     statement: "Avoid unnecessary complexity while solving genuinely hard problems.",
     detail:
-      "The difficulty should come from the problem — settlement correctness, escrow custody, scheduling under constraints — not from the architecture around it. Ten small, understandable services beat one tangled one.",
+      "The difficulty should come from the problem — settlement correctness, escrow custody, scheduling under constraints. Ten small, understandable services beat one tangled one.",
   },
 ];
