@@ -1,4 +1,5 @@
 import { About } from "@/components/About";
+import { AiSystems } from "@/components/AiSystems";
 import { Arsenal } from "@/components/Arsenal";
 import { Building } from "@/components/Building";
 import { Contact } from "@/components/Contact";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <SignalStrip />
       <FeaturedProjects />
+      <AiSystems />
       <About />
       <Arsenal />
       <Principles />

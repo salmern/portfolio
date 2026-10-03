@@ -1,8 +1,11 @@
 import { ArrowUpRight, Github } from "lucide-react";
+import { CaseStudyRow } from "@/components/CaseStudyRow";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
-import { otherWork } from "@/data/projects";
+import { otherWork, projects } from "@/data/projects";
 import { profile } from "@/data/site";
+
+const independentCaseStudies = projects.filter((p) => p.homeSection === "building");
 
 const protocolWork = [
   {
@@ -38,10 +41,10 @@ export function Building() {
         <div className="flex flex-wrap items-end justify-between gap-8">
           <Reveal>
             <SectionHeading
-              index="06"
+              index="07"
               label="Building"
               title="I build."
-              description="Selected work beyond the case studies — tooling, monitoring, and protocol experiments — plus what's on the bench."
+              description="Independent projects outside my production work: two full case studies, plus tooling, monitoring, and protocol experiments."
             />
           </Reveal>
           <Reveal delay={0.1}>
@@ -58,8 +61,17 @@ export function Building() {
           </Reveal>
         </div>
 
+        {/* independent case studies */}
+        <div className="mt-14">
+          {independentCaseStudies.map((project, i) => (
+            <Reveal key={project.slug} delay={Math.min(i * 0.06, 0.12)}>
+              <CaseStudyRow project={project} index={project.index} />
+            </Reveal>
+          ))}
+        </div>
+
         {/* other work grid */}
-        <div className="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2">
+        <div className="mt-16 grid gap-px border border-line bg-line sm:grid-cols-2">
           {otherWork.map((w, i) => (
             <Reveal key={w.name} delay={Math.min(i * 0.05, 0.15)}>
               <article className="group flex h-full flex-col bg-bg p-6 transition-colors duration-300 hover:bg-surface md:p-7">

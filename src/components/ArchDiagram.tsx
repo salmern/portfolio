@@ -152,7 +152,7 @@ export function ArchDiagram({ nodes, edges, caption }: { nodes: ArchNode[]; edge
   return (
     <div className="w-full">
       {geom ? (
-        <div className="border border-line bg-surface/40 p-2 sm:p-3">
+        <div className="overflow-x-auto border border-line bg-surface/40 p-2 sm:p-3">
           <div ref={containerRef} className="relative w-full" style={{ height: geom.height }}>
           <svg className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
             <defs>

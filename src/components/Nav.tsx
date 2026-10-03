@@ -10,6 +10,7 @@ import { profile } from "@/data/site";
 
 const links = [
   { id: "work", label: "Work" },
+  { id: "ai-systems", label: "AI Systems" },
   { id: "about", label: "About" },
   { id: "arsenal", label: "Stack" },
   { id: "experience", label: "Experience" },

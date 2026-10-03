@@ -8,14 +8,14 @@ export const experience: ExperienceEntry[] = [
     location: "Kano, Nigeria",
     current: true,
     description:
-      "Building and scaling fintech infrastructure for payment processing, POS terminals, digital wallets, and government revenue platforms.",
+      "Building and scaling fintech infrastructure for payment processing, POS terminals, and digital wallets, plus production systems for Kano State Government.",
     contributions: [
       "Payment terminal system (ZainPOS) and digital wallet platform (ZainPay) — the payment infrastructure in this portfolio's flagship case study.",
-      "Kano State government revenue (IGR) automation: a production system collecting and reconciling government revenue.",
+      "Kano State Government systems: the revenue (IGR) platform collecting and reconciling government revenue, the BLM land management system, and Water Board utility systems.",
       "Microservice architecture with explicit error handling, retry mechanisms, and monitoring — designing for 99.9% availability rather than hoping for it.",
       "Database design, API development, and reliability ownership across the full lifecycle, from requirements through deployment.",
     ],
-    technologies: ["TypeScript", "Node.js", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS", "CI/CD"],
+    technologies: ["TypeScript", "Node.js", "Go", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS", "CI/CD"],
   },
   {
     period: "2019 — 2021",

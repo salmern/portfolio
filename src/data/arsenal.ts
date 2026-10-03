@@ -38,7 +38,7 @@ export const arsenal: ArsenalGroup[] = [
       { name: "Node.js", use: "The runtime behind APIs, workers, CLIs, and on-chain indexers.", projects: ["ZainPOS", "SolNest", "Chain Sentinel"] },
       { name: "Python", use: "Data pipelines, scoring engines, reconciliation, and automation.", projects: ["Lead Triage", "ZainPOS", "TradeLens AI"] },
       { name: "Rust", use: "Performance-critical services and Solana programs.", projects: ["ZainPOS", "SolNest", "Lifelark"] },
-      { name: "Go", use: "Systems and tooling where simplicity and deployment matter.", projects: ["Tooling"] },
+      { name: "Go", use: "Systems and tooling where simplicity and deployment matter.", projects: ["ZainPOS", "ZainPay", "Kano State systems"] },
       { name: "JavaScript", use: "Interfaces and integrations across the stack.", projects: ["SolNest"] },
       { name: "Solidity", use: "EVM smart contracts with Foundry test suites.", projects: ["BoardroomX", "VoteSafe"] },
       { name: "Java", use: "Taught it — and still read it fluently when systems demand it.", projects: ["Aptech instruction"] },

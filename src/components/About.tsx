@@ -20,7 +20,7 @@ export function About() {
     <section id="about" className="relative z-10 border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
-          <SectionHeading index="02" label="About" title="Engineering." />
+          <SectionHeading index="03" label="About" title="Engineering." />
         </Reveal>
 
         <div className="mt-14 grid gap-14 lg:grid-cols-[1.5fr_1fr]">

@@ -9,7 +9,7 @@ export function Experience() {
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
           <SectionHeading
-            index="05"
+            index="06"
             label="Experience"
             title="Built in production."
             description="Where I've shipped and what I owned — focused on engineering impact."

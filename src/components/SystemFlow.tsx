@@ -193,7 +193,7 @@ export function SystemFlow() {
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 md:py-32">
         <Reveal>
           <SectionHeading
-            index="07"
+            index="08"
             label="Systems in motion"
             title="A payment intent, traced end to end."
             description="This is how I think about a request moving through a system — every hop validated, every step accounted for. Press run, or watch it go."

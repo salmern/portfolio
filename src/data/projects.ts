@@ -1,4 +1,5 @@
 import type { OtherWork, Project } from "@/types";
+import { productionCases } from "@/data/production-cases";
 
 export const projects: Project[] = [
   {
@@ -12,7 +13,7 @@ export const projects: Project[] = [
     year: "2021 — present",
     status: "Production",
     statusTone: "live",
-    stack: ["TypeScript", "Node.js", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS"],
+    stack: ["TypeScript", "Node.js", "Go", "Python", "Rust", "PostgreSQL", "Redis", "Docker", "AWS"],
     problem: [
       "Payments infrastructure sits between merchants, terminals, banks, and providers. Every flow — onboarding a terminal, authorizing a card payment, disbursing a loan, settling to a provider — has to be correct the first time, because a settlement error is real money.",
       "Merchants arrive in very different shapes: registered businesses, individuals, and public institutions (which have no CAC number). Each needs KYC verification, virtual accounts, and terminal provisioning — without leaking state between tenants.",
@@ -89,16 +90,18 @@ export const projects: Project[] = [
       "Settlement and reconciliation automated end-to-end: queue workers, cron schedulers, and repush recovery for failed transactions.",
     ],
     technologies: [
-      { group: "Backend", items: ["TypeScript", "Node.js", "Express", "Rust", "Actix Web", "Tokio", "SQLx"] },
+      { group: "Backend", items: ["TypeScript", "Node.js", "Express", "Go", "Rust", "Actix Web", "Tokio", "SQLx"] },
       { group: "Data & automation", items: ["Python", "pandas", "PostgreSQL", "Redis", "migrations", "reconciliation reports"] },
       { group: "Security", items: ["JWT", "Argon2", "secrecy", "webhook signature verification"] },
       { group: "Infrastructure", items: ["Docker", "AWS", "Tracing / Bunyan logs", "wiremock · mockito tests"] },
     ],
-    next: "solnest",
+    links: [{ label: "zainpos.ng", href: "https://zainpos.ng/" }],
+    next: "zainpay",
   },
+  ...productionCases,
   {
     slug: "solnest",
-    index: "02",
+    index: "01",
     title: "SolNest",
     tagline: "Rental escrow on Solana",
     summary:
@@ -176,11 +179,12 @@ export const projects: Project[] = [
       { group: "Frontend", items: ["React 19", "TypeScript", "Tailwind CSS", "Wallet Adapter"] },
       { group: "Tooling", items: ["Python", "devnet seeding", "E2E escrow scenarios"] },
     ],
+    homeSection: "building",
     next: "lifelark",
   },
   {
     slug: "lifelark",
-    index: "03",
+    index: "02",
     title: "Lifelark",
     tagline: "Healthcare platform backend",
     summary:
@@ -258,11 +262,12 @@ export const projects: Project[] = [
       { group: "Web & services", items: ["TypeScript", "Node.js", "Next.js", "reminder jobs"] },
       { group: "Data & reporting", items: ["Python", "pandas", "report generation"] },
     ],
-    next: "lead-triage",
+    homeSection: "building",
+    next: "solnest",
   },
   {
     slug: "lead-triage",
-    index: "04",
+    index: "06",
     title: "Lead Triage",
     tagline: "Deterministic lead scoring engine",
     summary:
@@ -340,6 +345,8 @@ export const projects: Project[] = [
       { group: "UI", items: ["Streamlit", "sortable tables", "CSV export"] },
       { group: "Quality", items: ["pytest", "property-style tests on scoring config"] },
     ],
+    links: [{ label: "GitHub", href: "https://github.com/salmern/Lead-Triage--" }],
+    homeSection: "ai-systems",
   },
 ];
 

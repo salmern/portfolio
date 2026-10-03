@@ -60,7 +60,26 @@ export interface Project {
   challenges: Decision[];
   result: string[];
   technologies: TechGroup[];
+  links?: ExternalLink[];
+  /** Home-page section the case study is listed under (defaults to "work"). */
+  homeSection?: string;
   next?: string;
+}
+
+export interface ExternalLink {
+  label: string;
+  href: string;
+}
+
+export interface AiSystem {
+  name: string;
+  kind: string;
+  description: string;
+  highlights: string[];
+  stack: string[];
+  repo: string;
+  live?: ExternalLink;
+  caseStudy?: string;
 }
 
 export interface OtherWork {
